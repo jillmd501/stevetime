@@ -1,0 +1,27 @@
+{
+  "name": "stevetime",
+  "version": "1.0.0",
+  "description": "An express app to build a live polling session.",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jillmd501/stevetime.git"
+  },
+  "keywords": [
+    "poll",
+    "steve",
+    "kinney",
+    "express",
+    "javascript"
+  ],
+  "author": "Jill Donohue",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jillmd501/stevetime/issues"
+  },
+  "homepage": "https://github.com/jillmd501/stevetime#readme"
+}

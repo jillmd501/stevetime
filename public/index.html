@@ -5,6 +5,11 @@
     <title>Poll the Students</title>
   </head>
   <body>
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo center">Steve Time</a>
+  </div>
+</nav>
 <div class="container">
   <h1>Poll the Students</h1>
     <div id="connection-count"></div>
@@ -15,7 +20,13 @@
       <button>C</button>
       <button>D</button>
     </div>
-</div>
+
+    <h3>Results</h3>
+    <div id='results'></div>
+
+    <h4>You chose: </h4>
+    <div id ='user-vote'></div>
+    </div>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="/client.js"></script>

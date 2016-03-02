@@ -46,10 +46,10 @@ io.on('connection', function (socket) {
 
 function countVotes(votes) {
 var voteCount = {
-    A: 0,
-    B: 0,
-    C: 0,
-    D: 0
+    'This is old hat to me': 0,
+    'I have an okay understanding of this': 0,
+    'I have no idea what you are babbling about': 0,
+    'Where am I?': 0
 };
   for (var vote in votes) {
     voteCount[votes[vote]]++

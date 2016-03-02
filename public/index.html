@@ -13,19 +13,40 @@
     <p><a class="btn btn-primary btn-lg" href="#" role="button">Make a Survey!</a></p>
   </div>
 
+  <form action="/poll" method="post">
+  <div class="container">
+    <label><h5>Please enter poll name.</h5></label><br>
+    <input type="text" name="poll[title]" class="form-control"><br><br>
+
+    <label><h5>Please choose a poll password or enter your existing password <br>if you are a returning user.</h5></label><br>
+    <input type="text" name="poll[adminId]" class="form-control"><br><br>
+
+    <label><h5>Enter up to four options.</h5></label><br>
+    <input type="text" name="poll[options]" class="form-control"><br>
+    <input type="text" name="poll[options]" class="form-control"><br>
+    <input type="text" name="poll[options]" class="form-control"><br>
+    <input type="text" name="poll[options]" class="form-control"><br><br>
+
+    <label><h5>How long do you want your poll to be?</h5></label>
+    <br>
+    <input type="text" name="poll[runtime]" value="N/A" class="form-control"><br><br>
+    <input id="submit" type="submit" class="btn btn-default"></input>
+  </div>
+</form>
+
   <h1>Poll the Students</h1>
     <div id="connection-count"></div>
     <div id="status-message"></div>
     <div id="choices">
-      <button>A</button>
-      <button>B</button>
-      <button>C</button>
-      <button>D</button>
+      <button>This is old hat to me</button>
+      <button>I have an okay understanding of this</button>
+      <button>I have no idea what you're babbling about</button>
+      <button>Where am I?</button>
     </div>
 
     <h3>Results</h3>
     <div id='results'></div>
-
+    <br>
     <h4>You chose: </h4>
     <div id ='user-vote'></div>
     </div>

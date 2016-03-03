@@ -21,10 +21,12 @@ for (var i = 0; i < buttons.length; i++) {
 
 var resultCount = document.getElementById('results')
 
-socket.on('voteCount', function (votes) {
+var pollId = window.location.pathname.split('/')[2];
+
+socket.on('voteCount-' + pollId, function (votes) {
   var results = "Results: ";
     for (var vote in votes) {
-      results = results + vote + ": " +  votes[vote] + " " 
+      results = results + vote + ": " +  votes[vote] + " "
     };
   resultCount.innerText = results;
 });

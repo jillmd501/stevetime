@@ -14,7 +14,7 @@ describe('GET /', function(){
 describe('undefined routes', function(){
   it('respond with a 404', function(done){
     request(app)
-      .get('/not-real')
+      .get('/fake')
       .expect(404, done);
   });
 });

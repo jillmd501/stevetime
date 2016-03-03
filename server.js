@@ -13,7 +13,7 @@ const io = socketIo(server);
 
 const bodyParser = require('body-parser');
 const countVotes = require('./lib/count-votes');
-const votes = require('./lib/votes');
+const polls = require('./lib/polls');
 const generateId = require('./lib/generate-id');
 
 app.use(express.static('public'));
@@ -21,7 +21,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs')
 app.locals.title = 'Steve Time';
-app.locals.polls = {};
 
 //routes
 
@@ -33,10 +32,10 @@ app.post('/poll', function(req, res){
   var poll = req.body.poll;
   var id = generateId();
   var adminId = req.body.poll.adminId;
-  app.locals.polls[id] = poll;
+  polls[id] = poll;
   poll['adminId'] = adminId;
   poll['id'] = id;
-  poll['votes'] = [];
+  poll['votes'] = {};
   res.redirect('/polls/' + id + "/" + adminId);
 });
 
@@ -56,7 +55,7 @@ app.get('/polls/admin/:adminId', function(req, res){
 })
 
 app.get('/polls/:id/:adminId', function(req, res){
-  var poll = app.locals.polls[req.params.id];
+  var poll = polls[req.params.id];
   res.render('steve-admin-view', {poll: poll, id: req.params.id, adminID: req.params.adminId, votes: countVotes(poll)});
 })
 
@@ -70,20 +69,16 @@ io.on('connection', function (socket) {
   socket.emit('statusMessage', 'You have connected.');
 
   socket.on('message', function (channel, pollId, message) {
-    console.log(channel, pollId, message)
-  if (channel === 'voteCast') {
-    // console.log(pollId, message)
-    // var poll = app.locals.polls[message.id]
-    // poll['votes'].push(message.option);
-    // votes[socket.id] = message;
-    socket.emit('voteCount-' + poll.id, countVotes(poll));
-    // socket.emit('userVote', message);
+    if (channel === 'voteCast') {
+      poll = polls[pollId]
+      poll['votes'][socket.id] = message;
+      console.log(poll)
   	}
 	});
 
 	socket.on('disconnect', function () {
 	  console.log('A user has disconnected.', io.engine.clientsCount);
-	  delete votes[socket.id];
+	  // delete polls[socket.id];
 	  // socket.emit('voteCount', countVotes(poll));
 	  io.sockets.emit('usersConnected', io.engine.clientsCount);
 	});

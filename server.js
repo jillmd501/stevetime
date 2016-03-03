@@ -69,11 +69,13 @@ io.on('connection', function (socket) {
 
   socket.emit('statusMessage', 'You have connected.');
 
-  socket.on('message', function (channel, message) {
+  socket.on('message', function (channel, pollId, message) {
+    console.log(channel, pollId, message)
   if (channel === 'voteCast') {
-    var poll = app.locals.polls[message.id]
-    poll['votes'].push(message.option);
-    votes[socket.id] = message;
+    // console.log(pollId, message)
+    // var poll = app.locals.polls[message.id]
+    // poll['votes'].push(message.option);
+    // votes[socket.id] = message;
     socket.emit('voteCount-' + poll.id, countVotes(poll));
     // socket.emit('userVote', message);
   	}

@@ -9,7 +9,6 @@
     <h5 class="center">
         <a href="/polls/<%= id %>/<%= poll.adminID %>">Poll Admin Link</a> &nbsp || &nbsp
         <a href="/polls/<%= id %>">Active Poll Link</a> &nbsp || &nbsp
-        <a href="#" id="close-poll">Close Poll</a>
       </h5>
 
   <div id="connection-count"></div>
@@ -19,15 +18,19 @@
     <% for(var i=0; i < poll.options.length; i++){ %>
       <tr>
         <% if(poll.options[i] != ""){ %>
-          <td><button class="btn btn-primary btn-lg"> <%=poll.options[i]%> </button><br><br></td>
+          <td><button class="btn btn-primary btn-lg vote-button"> <%=poll.options[i]%> </button><br><br></td>
           <td id="<%=poll.options[i].toUpperCase()%>-votes"> <%= votes[poll.options[i].toUpperCase()]%> </td>
         <% } %>
       </tr>
     <% } %>
+
+    <a href="#" id="close-poll">Close Poll</a>
 
   <h3>Results</h3>
     <div id='results'></div>
   <h3>Your vote:</h3>
     <div id='user-vote'></div>
 </div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/client.js"></script>
 </html>

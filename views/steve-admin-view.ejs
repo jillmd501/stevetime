@@ -5,11 +5,12 @@
 
     <title>Steve Time</title>
   </head>
-  <div class='container'>
-    <h5 class="center">
-        <a href="/polls/<%= id %>/<%= poll.adminID %>">Poll Admin Link</a> &nbsp || &nbsp
-        <a href="/polls/<%= id %>">Active Poll Link</a> &nbsp || &nbsp
-      </h5>
+
+<div class='container'>
+  <h5 class="center">
+      <a href="/polls/<%= id %>/<%= poll.adminID %>">Poll Admin Link</a>
+      <a href="/polls/<%= id %>">Active Poll Link</a>
+  </h5>
 
   <div id="connection-count"></div>
 
@@ -19,7 +20,7 @@
       <tr>
         <% if(poll.options[i] != ""){ %>
           <td><button class="btn btn-primary btn-lg vote-button"> <%=poll.options[i]%> </button><br><br></td>
-          <td id="<%=poll.options[i].toUpperCase()%>-votes"> <%= votes[poll.options[i].toUpperCase()]%> </td>
+          <td id="<%=poll.options[i]%>-votes"> <%= votes[poll.options[i]]%> </td>
         <% } %>
       </tr>
     <% } %>
@@ -27,10 +28,11 @@
     <a href="#" id="close-poll">Close Poll</a>
 
   <h3>Results</h3>
-    <div id='results'></div>
+    <div id='count-votes'></div>
   <h3>Your vote:</h3>
     <div id='user-vote'></div>
 </div>
-<script src="/socket.io/socket.io.js"></script>
-<script src="/client.js"></script>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/client.js"></script>
 </html>

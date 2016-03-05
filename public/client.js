@@ -17,26 +17,22 @@ var buttons = document.querySelectorAll('.vote-button');
 
 for (var i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener('click', function () {
-    console.log(pollId, this.innerText);
     socket.send('voteCast', pollId, this.innerText);
   });
 }
-//
-// var resultCount = document.getElementById('results')
-//
-//
 
-// socket.on('voteCount-' + pollId, function (votes) {
-//   alert();
-//   var results = "Results: ";
-//     for (var vote in votes) {
-//       results = results + vote + ": " +  votes[vote] + " "
-//     };
-//   resultCount.innerText = results;
-// });
+var resultCount = document.getElementById('results')
 
-// var userVote =document.getElementById('user-vote')
-//
-// socket.on('userVote', function (message) {
-//   userVote.innerText = message;
-// });
+socket.on('voteCount-' + pollId, function (polls) {
+  var results = "Results: ";
+    for (var poll in polls) {
+      results = results + vote + ": " +  polls[vote] + " "
+    };
+  resultCount.innerText = results;
+});
+
+var userVote =document.getElementById('user-vote')
+
+socket.on('userVote', function (message) {
+  userVote.innerText = message;
+});

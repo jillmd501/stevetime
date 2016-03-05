@@ -6,8 +6,6 @@
 <div class='container'>
 
 <h3 class="center">Submit Your Vote!</h3>
-<!-- <h5 class="center"><div id="vote-message"></div></h5><br> -->
-<div id="connection-count"></div>
 
 <table class="centered">
   <thead>
@@ -17,14 +15,16 @@
     </tr>
   </thead>
   <tbody id="choices">
-    <% for(var i=0; i < poll.options.length; i++){ %>
-      <tr>
-        <% if(poll.options[i] != ""){ %>
-          <td><button class="btn btn-default"> <%=poll.options[i]%> </button><br><br></td>
-          <td id="<%=poll.options[i].toUpperCase()%>-votes"> <%= votes[poll.options[i].toUpperCase()]%> </td>
-        <% } %>
-      </tr>
-    <% } %>
+    <h1 style='color: blue'><%= poll.title %></h1>
+      <br>
+      <% for(var i=0; i < poll.options.length; i++){ %>
+        <tr>
+          <% if(poll.options[i] != ""){ %>
+            <td><button class="btn btn-primary btn-lg vote-button"> <%=poll.options[i]%> </button><br><br></td>
+            <td id="<%=poll.options[i]%>-votes"> <%= votes[poll.options[i]]%> </td>
+          <% } %>
+        </tr>
+      <% } %>
   </tbody>
 </table>
 

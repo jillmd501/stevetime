@@ -56,6 +56,7 @@ app.get('/polls/admin/:adminId', function(req, res){
 
 app.get('/polls/:id/:adminId', function(req, res){
   var poll = polls[req.params.id];
+  console.log(poll,"poll")
   res.render('steve-admin-view', {poll: poll, id: req.params.id, adminID: req.params.adminId, votes: countVotes(poll)});
 })
 
@@ -72,14 +73,14 @@ io.on('connection', function (socket) {
     if (channel === 'voteCast') {
       poll = polls[pollId]
       poll['votes'][socket.id] = message;
-      console.log(poll)
+      countVotes(poll)
   	}
 	});
 
 	socket.on('disconnect', function () {
 	  console.log('A user has disconnected.', io.engine.clientsCount);
 	  // delete polls[socket.id];
-	  // socket.emit('voteCount', countVotes(poll));
+	  socket.emit('voteCount', countVotes(poll));
 	  io.sockets.emit('usersConnected', io.engine.clientsCount);
 	});
 });

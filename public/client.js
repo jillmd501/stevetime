@@ -1,12 +1,7 @@
 var socket = io();
 var pollId = window.location.pathname.split('/')[2];
 
-// var connectionCount = document.getElementById('connection-count');
-//
-// socket.on('usersConnected', function (count) {
-//   connectionCount.innerText = 'Connected Users: ' + count;
-// });
-//
+
 // var statusMessage = document.getElementById('status-message');
 //
 // socket.on('statusMessage', function (message) {
@@ -21,18 +16,18 @@ for (var i = 0; i < buttons.length; i++) {
   });
 }
 
-var resultCount = document.getElementById('results')
+var resultCount = document.getElementById('vote-count')
 
-socket.on('voteCount-' + pollId, function (polls) {
+socket.on('voteCount', function (votes) {
   var results = "Results: ";
-    for (var poll in polls) {
-      results = results + vote + ": " +  polls[vote] + " "
-    };
+  for (var vote in votes) {
+    results = results + vote + ": " +  votes[vote] + " "
+  };
   resultCount.innerText = results;
 });
 
 var userVote =document.getElementById('user-vote')
 
-socket.on('userVote', function (message) {
-  userVote.innerText = message;
-});
+// socket.on('userVote', function (message) {
+//   userVote.innerText = message;
+// });

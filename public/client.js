@@ -18,12 +18,4 @@ socket.on('voteCount', function (votes) {
   resultCount.innerText = results;
 });
 
-// 
-// socket.on('disableVotes', function(){
-//   for (var i = 0; i < buttons.length; i++) {
-//     buttons[i].className += " disabled";
-//   };
-//   adminClosedMessage.innerText = "Too Late! Poll is over!"
-// })
-
 var userVote =document.getElementById('user-vote')

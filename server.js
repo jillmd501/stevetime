@@ -33,22 +33,31 @@ app.post('/poll', function(req, res){
   poll['adminId'] = adminId;
   poll['id'] = id;
   poll['votes'] = {};
-  // setPollClose(poll);
   res.redirect('/polls/' + id + "/" + adminId);
 });
 
 app.get('/polls/:id', function(req, res){
-  var poll = req.body.poll;
+  var poll = app.locals.polls[req.params.id];
   res.render('admin-poll-view', {poll: poll, votes: countVotes(poll)});
 });
 
+app.get('/polls/admin/:adminId', function(req, res){
+  var pollList = [];
+  var keys = Object.keys(app.locals.polls)
+  for (var i = 0; i < keys.length; i++){
+    var poll = app.locals.polls[keys[i]];
+    if(poll['adminId'] === req.params.adminId){ pollList.push(poll)}
+  }
+  res.render('steve-admin-view', {polls: pollList});
+})
+
 app.get('/polls/:id/:adminId', function(req, res){
-  var poll = polls[req.params.adminID];
+  var poll = polls[req.params.id];
   console.log(poll,"poll")
   res.render('steve-admin-view', {poll: poll, id: req.params.id, adminID: req.params.adminId, votes: countVotes(poll)});
 })
 
-// sockets
+//sockets
 
 io.on('connection', function (socket) {
   console.log('A user has connected.', io.engine.clientsCount);
@@ -62,23 +71,8 @@ io.on('connection', function (socket) {
       poll = polls[pollId]
       poll['votes'][socket.id] = message;
       socket.emit('voteCount', countVotes(poll));
-  	} else if (channel === 'closePoll'){
-        var poll = polls[pollId]]
-        poll['closed'] = true
-        io.sockets.emit('disableVotes')
-    }
-
+  	}
 	});
 });
 
-
-// functions
-// function setPollClose(poll){
-//   if(poll['runtime'] !== "N/A"){
-//     setTimeout(function(){
-//       poll['closed'] = true
-//       io.sockets.emit('disableVotes')
-//     }, (poll['runtime'] * 1000 * 60))
-//   }
-// }
 module.exports = app;

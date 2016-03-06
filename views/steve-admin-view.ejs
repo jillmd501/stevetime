@@ -1,17 +1,14 @@
 <!doctype html>
 <html>
   <head>
-
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
-    <link href="/css/application.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Poiret+One|Pacifico' rel='stylesheet' type='text/css'>
-
 
     <title>Steve Time</title>
   </head>
 
 <div class='container'>
   <h5 class="center">
+      <a href="/polls/<%= id %>/<%= poll.adminID %>">Poll Admin Link</a>
       <a href="/polls/<%= id %>">Active Poll Link</a>
   </h5>
 
@@ -32,6 +29,7 @@
 
   <h3>Results</h3>
     <div id='vote-count'></div>
+
 </div>
 
   <script src="/socket.io/socket.io.js"></script>

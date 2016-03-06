@@ -13,7 +13,7 @@ var resultCount = document.getElementById('vote-count')
 socket.on('voteCount', function (votes) {
   var results = "Results: ";
   for (var vote in votes) {
-    results = results + vote + ": " +  votes[vote] + " "
+    results = vote + ": " +  votes[vote] + " "
   };
   resultCount.innerText = results;
 });

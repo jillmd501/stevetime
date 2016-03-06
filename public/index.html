@@ -1,16 +1,21 @@
 <!doctype html>
 <html>
   <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <title>Poll the Students</title>
-  </head>
-  <body>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+  <link href="/css/application.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Poiret+One|Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+
+  <title>Steve Time</title>
+</head>
+
+<body>
+<div class="background-image">
 <div class="container">
   <br><br>
   <div class="jumbotron">
     <h1>Steve Time</h1>
-    <p>An application to make sure students are doing the thing and doing it well!</p>
-    <p><a class="btn btn-primary btn-lg" href="#" role="button">Make a Survey!</a></p>
+    <p>An application to make sure students are doing the thing and doing it well and not just job searching (cough cough)!</p>
   </div>
 
   <div class="container">
@@ -19,7 +24,7 @@
       <label><h5>Please enter poll name.</h5></label><br>
       <input type="text" name="poll[title]" class="form-control"><br><br>
 
-      <label><h5>Please choose a poll password or enter your existing password <br>if you are a returning user.</h5></label><br>
+      <label><h5>Please choose a poll password or enter your existing password if you are a returning user.</h5></label><br>
       <input type="password-field" name="poll[adminId]" class="form-control"><br><br>
 
       <label><h5>Enter up to four options.</h5></label><br>
@@ -32,68 +37,9 @@
     </div>
   </div>
 </form>
-
-  <h1>Poll the Students</h1>
-    <div id="connection-count"></div>
-    <div id="status-message"></div>
-    <div id="choices">
-      <button>A</button>
-      <button>B</button>
-      <button>C</button>
-      <button>D</button>
-    </div>
-
-    <h3>Results</h3>
-    <div id='results'></div>
-    <br>
-    <h4>You chose: </h4>
-    <div id ='user-vote'></div>
-    </div>
-
+</div>
+</div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/client.js"></script>
   </body>
-</html>
-
-
-
-
-
-<!doctype html>
-<html>
-  <head>
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
-
-    <title>Steve Time</title>
-  </head>
-
-<div class='container'>
-  <h5 class="center">
-      <a href="/polls/<%= id %>/<%= poll.adminID %>">Poll Admin Link</a>
-      <a href="/polls/<%= id %>">Active Poll Link</a>
-  </h5>
-
-  <div id="connection-count"></div>
-
-  <h1 style='color: blue'><%= poll.title %></h1>
-    <br>
-    <% for(var i=0; i < poll.options.length; i++){ %>
-      <tr>
-        <% if(poll.options[i] != ""){ %>
-          <td><button class="btn btn-primary btn-lg vote-button"> <%=poll.options[i]%> </button><br><br></td>
-          <td id="<%=poll.options[i]%>-votes"> <%= votes[poll.options[i]]%> </td>
-        <% } %>
-      </tr>
-    <% } %>
-
-<a href="#" id="close-poll">Close Poll</a>
-
-  <h3>Results</h3>
-    <div id='vote-count'></div>
-  <h3>Your vote:</h3>
-    <div id='user-vote'></div>
-</div>
-
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="/client.js"></script>
 </html>

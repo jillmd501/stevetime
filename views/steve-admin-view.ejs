@@ -1,20 +1,22 @@
 <!doctype html>
 <html>
   <head>
+
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+    <link href="/css/application.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Poiret+One|Pacifico' rel='stylesheet' type='text/css'>
+
 
     <title>Steve Time</title>
   </head>
 
 <div class='container'>
   <h5 class="center">
-      <a href="/polls/<%= id %>/<%= poll.adminID %>">Poll Admin Link</a>
-      <a href="/polls/<%= id %>">Active Poll Link</a>
+      <a href="/polls/<%= id %>">Active Poll Link</a><p>☝ Give this to the pesky students!</p>
   </h5>
+<div id="connection-count"></div>
 
-  <div id="connection-count"></div>
-
-  <h1 style='color: blue'><%= poll.title %></h1>
+  <h1><%= poll.title %></h1>
     <br>
     <% for(var i=0; i < poll.options.length; i++){ %>
       <tr>
@@ -29,9 +31,7 @@
 
   <h3>Results</h3>
     <div id='vote-count'></div>
-
 </div>
-
   <script src="/socket.io/socket.io.js"></script>
   <script src="/client.js"></script>
 </html>

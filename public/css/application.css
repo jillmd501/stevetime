@@ -1,6 +1,8 @@
 h1 {
   text-align: center;
   font-family: 'Pacifico', cursive;
+  font-size: 6.5rem;
+  color: red;
 }
 a {
   text-align: center;
@@ -8,11 +10,25 @@ a {
 }
 
 h5 {
-  font-family: 'Poiret One', cursive;
+  font-family: 'Montserrat', sans-serif;
   font-size: 2.5rem;
+  color: red;
 }
 h3 {
   text-align: center;
-  text-s
+  font-family: 'Pacifico', cursive;
+  font-size: 4.5rem;
+  color: red;
+}
+#vote-count {
+  text-align: center;
+  font-family: 'Poiret One', cursive;
+  font-size: 4.5rem;
+}
+.background-image {
+  background-image: url(https://c2.staticflickr.com/8/7346/11246836254_443529401d_b.jpg)
+}
+
+p {
   font-family: 'Poiret One', cursive;
 }

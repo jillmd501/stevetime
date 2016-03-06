@@ -41,7 +41,7 @@ app.get('/polls/:id', function(req, res){
   var poll = req.body.poll;
   res.render('admin-poll-view', {poll: poll, votes: countVotes(poll)});
 });
-
+// This is where it is screwing up
 app.get('/polls/:id/:adminId', function(req, res){
   var poll = polls[req.params.adminID];
   console.log(poll,"poll")
@@ -62,11 +62,12 @@ io.on('connection', function (socket) {
       poll = polls[pollId]
       poll['votes'][socket.id] = message;
       socket.emit('voteCount', countVotes(poll));
-  	} else if (channel === 'closePoll'){
-        var poll = polls[pollId]]
-        poll['closed'] = true
-        io.sockets.emit('disableVotes')
-    }
+  	}
+    // else if (channel === 'closePoll'){
+    //   var poll = polls[pollId]]
+    //   poll['closed'] = true
+    //   io.sockets.emit('disableVotes')
+    // }
 
 	});
 });

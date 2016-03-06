@@ -1,13 +1,5 @@
 var socket = io();
 var pollId = window.location.pathname.split('/')[2];
-
-
-// var statusMessage = document.getElementById('status-message');
-//
-// socket.on('statusMessage', function (message) {
-//   statusMessage.innerText = message;
-// });
-//
 var buttons = document.querySelectorAll('.vote-button');
 
 for (var i = 0; i < buttons.length; i++) {
@@ -26,8 +18,12 @@ socket.on('voteCount', function (votes) {
   resultCount.innerText = results;
 });
 
-var userVote =document.getElementById('user-vote')
+// 
+// socket.on('disableVotes', function(){
+//   for (var i = 0; i < buttons.length; i++) {
+//     buttons[i].className += " disabled";
+//   };
+//   adminClosedMessage.innerText = "Too Late! Poll is over!"
+// })
 
-// socket.on('userVote', function (message) {
-//   userVote.innerText = message;
-// });
+var userVote =document.getElementById('user-vote')

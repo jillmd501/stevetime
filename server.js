@@ -78,12 +78,4 @@ io.on('connection', function (socket) {
 	});
 
 
-	socket.on('disconnect', function () {
-	  // console.log('A user has disconnected.', io.engine.clientsCount);
-	  // // delete polls[socket.id];
-	  // socket.emit('voteCount', countVotes(poll));
-	  // io.sockets.emit('usersConnected', io.engine.clientsCount);
-	});
-});
-
 module.exports = app;

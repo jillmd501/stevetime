@@ -1,13 +1,5 @@
 var socket = io();
 var pollId = window.location.pathname.split('/')[2];
-
-
-// var statusMessage = document.getElementById('status-message');
-//
-// socket.on('statusMessage', function (message) {
-//   statusMessage.innerText = message;
-// });
-//
 var buttons = document.querySelectorAll('.vote-button');
 
 for (var i = 0; i < buttons.length; i++) {
@@ -27,7 +19,3 @@ socket.on('voteCount', function (votes) {
 });
 
 var userVote =document.getElementById('user-vote')
-
-// socket.on('userVote', function (message) {
-//   userVote.innerText = message;
-// });
